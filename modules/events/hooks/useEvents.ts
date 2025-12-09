@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { EventType } from "@/components/events/types/event";
+import { EventType } from "@/modules/events/types/event";
 import { getUserEvents } from "../services/eventActions";
 
 export function useEvents(userId: number | undefined) {

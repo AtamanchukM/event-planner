@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import { createUser } from "@/components/auth/services/registerAction";
+import { createUser } from "@/modules/auth/services/registerAction";
 
 export default function Register() {
   const [email, setEmail] = useState("");

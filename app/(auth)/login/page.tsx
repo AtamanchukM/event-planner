@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { loginWithCredentials } from "@/components/auth/services/loginService";
+import { loginWithCredentials } from "@/modules/auth/services/loginService";
 
 export default function Login() {
   const [email, setEmail] = useState("");

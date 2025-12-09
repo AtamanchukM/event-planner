@@ -8,21 +8,21 @@ import {
   submitEvent,
   startEditEvent,
   deleteEventWithConfirm,
-} from "@/components/events/services/eventHandlers";
-import { EventType } from "@/components/events/types/event";
-import EventForm from "@/components/events/components/EventForm";
-import EventList from "@/components/events/components/EventList";
-import EventFilters from "@/components/events/components/EventFilters";
+} from "@/modules/events/services/eventHandlers";
+import { EventType } from "@/modules/events/types/event";
+import EventForm from "@/modules/events/components/EventForm";
+import EventList from "@/modules/events/components/EventList";
+import EventFilters from "@/modules/events/components/EventFilters";
 import {
   getEventsForDate,
   getTileClassName,
-} from "@/components/events/services/calendarUtils";
-import { filterEvents } from "@/components/events/services/eventFilters";
-import { useEvents } from "@/components/events/hooks/useEvents";
-import { useEventForm } from "@/components/events/hooks/useEventForm";
-import { useFilters } from "@/components/events/hooks/useFilters";
+} from "@/modules/events/services/calendarUtils";
+import { filterEvents } from "@/modules/events/services/eventFilters";
+import { useEvents } from "@/modules/events/hooks/useEvents";
+import { useEventForm } from "@/modules/events/hooks/useEventForm";
+import { useFilters } from "@/modules/events/hooks/useFilters";
 import { useRouter } from "next/navigation";
-import { useRequireAuth } from "@/components/auth/hooks/useRequireAuth";
+import { useRequireAuth } from "@/modules/auth/hooks/useRequireAuth";
 
 export default function EventsPage() {
   const router = useRouter();

@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 // @ts-expect-error CSS side-effect import
 
 import '@/app/globals.css'; 
-import SessionWrapper from "@/components/common/SessionWrapper";
+import SessionWrapper from "@/modules/common/SessionWrapper";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],

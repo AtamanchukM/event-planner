@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { EventFormType } from "@/components/events/types/event";
+import { EventFormType } from "@/modules/events/types/event";
 
 export function useEventForm() {
   const [form, setForm] = useState<EventFormType>({
