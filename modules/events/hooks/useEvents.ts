@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { EventType } from "@/modules/events/types/event";
 import { getUserEvents } from "../services/eventActions";
 
-export function useEvents(userId: number | undefined) {
-  const [events, setEvents] = useState<EventType[]>([]);
+export function useEvents(userId: number | undefined, initialEvents?: EventType[]) {
+  const [events, setEvents] = useState<EventType[]>(initialEvents ?? []);
 
   async function fetchEvents() {
     if (!userId) return;

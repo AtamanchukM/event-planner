@@ -1,3 +1,4 @@
+
 import { EventType } from "../types/event";
 
 export function getEventsForDate(events: EventType[], date: Date) {
