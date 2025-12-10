@@ -7,8 +7,8 @@ export const usePremium = () => {
   const router = useRouter();
 
   useEffect(() => {
-    if (data?.user && !data.user.premium && !data.user.subscription) {
+    if (data?.user && !data.user.premium) {
       router.push("/premium");
     }
-  }, [data]);
+  }, [data, router]);
 };

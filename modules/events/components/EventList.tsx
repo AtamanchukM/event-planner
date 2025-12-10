@@ -5,9 +5,10 @@ type Props = {
   events: EventType[];
   onEdit: (ev: EventType) => void;
   onDelete: (id: number) => void;
+  premium: boolean;
 };
 
-export default function EventList({ events, onEdit, onDelete }: Props) {
+export default function EventList({ events, onEdit, onDelete, premium }: Props) {
   if (events.length === 0)
     return <ul><li className="text-gray-400 italic">Немає подій</li></ul>;
   return (
@@ -34,13 +35,23 @@ export default function EventList({ events, onEdit, onDelete }: Props) {
           <div className="flex gap-2 mt-2">
             <button
               onClick={() => onEdit(ev)}
-              className="px-3 py-1 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 transition"
+              className={`px-3 py-1 rounded transition ${
+                premium
+                  ? "bg-blue-100 text-blue-700 hover:bg-blue-200"
+                  : "bg-gray-200 text-gray-500 cursor-not-allowed"
+              }`}
+              disabled={!premium}
             >
               Редагувати
             </button>
             <button
               onClick={() => onDelete(ev.id)}
-              className="px-3 py-1 bg-red-100 text-red-700 rounded hover:bg-red-200 transition"
+              className={`px-3 py-1 rounded transition ${
+                premium
+                  ? "bg-red-100 text-red-700 hover:bg-red-200"
+                  : "bg-gray-200 text-gray-500 cursor-not-allowed"
+              }`}
+              disabled={!premium}
             >
               Видалити
             </button>

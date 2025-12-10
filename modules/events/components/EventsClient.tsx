@@ -103,14 +103,26 @@ export function EventsClient({ userId, initialEvents, premium, socks }: Props) {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (!premium) {
+      setMessage("Редагування та додавання доступні лише з преміумом");
+      return;
+    }
     await submitEvent(form, userId, setForm, setMessage, fetchEvents);
   }
 
   function handleEdit(ev: EventType) {
+    if (!premium) {
+      setMessage("Редагування доступне лише з преміумом");
+      return;
+    }
     startEditEvent(ev, setForm);
   }
 
   async function handleDelete(id: number) {
+    if (!premium) {
+      setMessage("Видалення доступне лише з преміумом");
+      return;
+    }
     await deleteEventWithConfirm(id, setMessage, fetchEvents);
   }
 
@@ -165,6 +177,7 @@ export function EventsClient({ userId, initialEvents, premium, socks }: Props) {
               events={eventsForSelectedDate}
               onEdit={handleEdit}
               onDelete={handleDelete}
+              premium={premiumActive}
             />
           </div>
           <div className="bg-white rounded-xl shadow p-4 mb-4">
@@ -180,6 +193,7 @@ export function EventsClient({ userId, initialEvents, premium, socks }: Props) {
             events={filteredEvents}
             onEdit={handleEdit}
             onDelete={handleDelete}
+            premium={premiumActive}
           />
         </div>
       </div>
