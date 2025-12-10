@@ -1,5 +1,5 @@
 "use server";
-import { prisma } from "@/lib/prisma/prisma";
+import { prisma } from "@/lib/prisma";
 import { hash } from "bcryptjs";
 
 export async function createUser(

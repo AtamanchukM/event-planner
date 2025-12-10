@@ -3,7 +3,7 @@ import NextAuth, { Session, SessionStrategy } from "next-auth";
 import { JWT } from "next-auth/jwt";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
-import { prisma } from "@/lib/prisma/prisma";
+import { prisma } from "@/lib/prisma";
 import { compare } from "bcryptjs";
 
 interface Credentials {

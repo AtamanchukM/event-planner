@@ -18,7 +18,11 @@ model User {
   email String @unique
   name String?
   password String
+  premium Boolean @default(false)
+  socks Int @default(0)
+  stripeId String?
   events Event[]
+  payments Payment[]
 }
 
 
@@ -32,9 +36,30 @@ model Event {
   authorId Int
   date DateTime @default(now())  // Дата та час події
 }
+
+model Payment {
+  id Int @id @default(autoincrement())
+  user User? @relation(fields: [userId], references: [id])
+  userId Int?
+  type PaymentType
+  amount Int
+  currency String
+  stripeSessionId String?
+  stripeCustomerId String?
+  stripeInvoiceId String?
+  quantity Int?
+  status String
+  createdAt DateTime @default(now())
+}
+
 enum Importance {
   NORMAL
   IMPORTANT
   CRITICAL
+}
+
+enum PaymentType {
+  ONE_TIME
+  SUBSCRIPTION
 }
 

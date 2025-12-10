@@ -4,6 +4,7 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getUserEvents } from "@/modules/events/services/eventActions";
 import { EventType } from "@/modules/events/types/event";
 import EventsClient from "@/modules/events/components/EventsClient";
+import { prisma } from "@/lib/prisma";
 
 export default async function EventsPage() {
   const session = await getServerSession(authOptions);
@@ -17,6 +18,7 @@ export default async function EventsPage() {
   }
 
   const events = await getUserEvents(userId);
+  const user = await prisma.user.findUnique({ where: { id: userId } });
   const initialEvents: EventType[] = events.map((ev: any) => ({
     ...ev,
     content: ev.content ?? "",
@@ -28,5 +30,12 @@ export default async function EventsPage() {
         : new Date(ev.createdAt).toISOString(),
   }));
 
-  return <EventsClient userId={userId} initialEvents={initialEvents} />;
+  return (
+    <EventsClient
+      userId={userId}
+      initialEvents={initialEvents}
+      premium={user?.premium ?? false}
+      socks={user?.socks ?? 0}
+    />
+  );
 }
